@@ -22,8 +22,6 @@ body {
 
 .calculator {
     background-color: var(--blue);
-    width: 500px;
-    height: 600px;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -41,47 +39,45 @@ body {
 
 .keyboard {
     display: flex;
-    flex-grow: 1;
-    gap: 20px;
+    gap: 10px;
 }
 
-.keyboard .left,
 .keyboard .right {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    gap: 10px;
 }
 
 .keyboard .left {
-    gap: 10px;
-    flex-grow: 3;
-}
-
-.keyboard .right {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
 }
-
-.keyboard .right button {
-    height: 80px;
-}
-
 
 .keyboard .row {
     display: flex;
-    flex-grow: 1;
-    gap: 20px;
+    gap: 10px;
 }
 
-.keyboard .left button {
-    flex-basis: 0;
-    flex-grow: 1;
-}
-
-
-.keyboard .right #equals {
-    flex-grow: 2;
+.keyboard button {
+    width: 80px;
+    height: 80px;
 }
 
 .keyboard #zero {
-    flex-grow: 2;
+    width: 170px;
+}
+
+.keyboard #equals {
+    height: 170px;
+}
+
+.keyboard .blue {
+    background-color: var(--key-blue);
+    color: white;
+}
+
+.keyboard .orange {
+    background-color: var(--orange);
+    color: black;
 }
