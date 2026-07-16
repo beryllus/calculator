@@ -106,6 +106,11 @@ const handleEqualsClick = (e) => {
 
 const calculate = (equalsPressed) => {
     result = evaluateResult();
+    if (Number.isNaN(result)) {
+        resetCalculator();
+        updateDisplay("Invalid Operation!");
+        return;
+    }
     state.equalsPressed = equalsPressed;
     state.first = result;
     state.second = "";
@@ -131,10 +136,12 @@ const addEqualsEvent = () => {
     equalsButton.addEventListener('click', handleEqualsClick);
 }
 
-const handleClearButtonClick = () => {
+const resetCalculator = () => {
     resetState();
     updateDisplay("0");
 }
+
+const handleClearButtonClick = () => resetCalculator();
 
 const addClearButtonEvent = () => {
     const clearButton = document.querySelector('#clear');
