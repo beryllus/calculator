@@ -121,6 +121,7 @@ const evaluateResult = () => {
 const resetState = () => {
     state.first = "";
     state.second = "";
+    state.operator = "";
     state.current = "first";
     state.equalsPressed = false;
 }
@@ -130,8 +131,19 @@ const addEqualsEvent = () => {
     equalsButton.addEventListener('click', handleEqualsClick);
 }
 
+const handleClearButtonClick = () => {
+    resetState();
+    updateDisplay("0");
+}
+
+const addClearButtonEvent = () => {
+    const clearButton = document.querySelector('#clear');
+    clearButton.addEventListener('click', handleClearButtonClick);
+}
+
 const roundThreeDecimals = (number) => Math.round(number * 1000) / 1000;
 
 addNumberEvents();
 addOperatorEvents();
 addEqualsEvent();
+addClearButtonEvent();
