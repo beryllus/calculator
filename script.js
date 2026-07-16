@@ -33,6 +33,31 @@ const operate = (a, b, operator) => {
 const handleNumberClick = (e) => {
     state[state.current] += e.target.textContent;
     updateDisplay(state[state.current]);
+    console.log(state)
+}
+
+const handleOperatorClick = (e) => {
+    if (!state.first) {
+        return;
+    }
+    e.target.classList.add("selected");
+    state.operator = e.target.id;
+    switchCurrent();
+}
+
+const addOperatorEvents = () => {
+    const operatorButtons = document.querySelectorAll(".operator");
+    operatorButtons.forEach((button) => {
+        button.addEventListener('click', handleOperatorClick);
+    })
+}
+
+const switchCurrent = () => {
+    if (state.current === "first") {
+        state.current = "second";
+    } else {
+        state.curent = "first";
+    }
 }
 
 const addNumberEvents = () => {
@@ -48,3 +73,4 @@ const updateDisplay = (value) => {
 }
 
 addNumberEvents();
+addOperatorEvents();

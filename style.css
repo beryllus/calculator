@@ -96,3 +96,7 @@ body {
     background-color: var(--orange);
     color: black;
 }
+
+.keyboard .selected {
+    background-color: var(--yellow);
+}
