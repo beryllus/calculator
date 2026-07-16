@@ -8,6 +8,7 @@ const divide = (a, b) => {
     return a / b;
 }
 
+
 let state = {
     first: "",
     second: "",
@@ -114,7 +115,7 @@ const calculate = (equalsPressed) => {
 const evaluateResult = () => {
     const result = operate(Number(state.first), Number(state.second), state.operator);
     console.log(result);
-    return result;
+    return roundThreeDecimals(result);
 }
 
 const resetState = () => {
@@ -128,6 +129,8 @@ const addEqualsEvent = () => {
     const equalsButton = document.querySelector("#equals");
     equalsButton.addEventListener('click', handleEqualsClick);
 }
+
+const roundThreeDecimals = (number) => Math.round(number * 1000) / 1000;
 
 addNumberEvents();
 addOperatorEvents();
