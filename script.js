@@ -7,3 +7,7 @@ const divide = (a, b) => {
     }
     return a / b;
 }
+
+let firstNumber = "";
+let operator = "";
+let secondNumber = "";
