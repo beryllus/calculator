@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --orange: #ff8838;
+    --blue: #4296a6;
+    --key-blue: #399fab;
+    --yellow: #ffdc08;
+    --purpleish: #ccd0fa;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--yellow);
+}
+
+.calculator {
+    background-color: var(--blue);
+    width: 500px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+}
+
+.display {
+    height: 100px;
+    background-color: var(--purpleish);
+    padding: 10px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.keyboard {
+    display: flex;
+    flex-grow: 1;
+    gap: 20px;
+}
+
+.keyboard .left,
+.keyboard .right {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.keyboard .left {
+    gap: 10px;
+    flex-grow: 3;
+}
+
+.keyboard .right {
+    gap: 10px;
+}
+
+.keyboard .right button {
+    height: 80px;
+}
+
+
+.keyboard .row {
+    display: flex;
+    flex-grow: 1;
+    gap: 20px;
+}
+
+.keyboard .left button {
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+
+.keyboard .right #equals {
+    flex-grow: 2;
+}
+
+.keyboard #zero {
+    flex-grow: 2;
+}
