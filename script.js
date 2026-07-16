@@ -33,7 +33,15 @@ const operate = (a, b, operator) => {
 const handleNumberClick = (e) => {
     state[state.current] += e.target.textContent;
     updateDisplay(state[state.current]);
+    removeSelectedOperator();
     console.log(state)
+}
+
+const removeSelectedOperator = () => {
+    const selectedOperator = document.querySelector(".selected");
+    if (selectedOperator) {
+        selectedOperator.classList.remove("selected");
+    }
 }
 
 const handleOperatorClick = (e) => {
