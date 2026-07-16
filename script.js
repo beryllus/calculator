@@ -32,6 +32,9 @@ const operate = (a, b, operator) => {
 }
 
 const handleNumberClick = (e) => {
+    if (state.justFinished) {
+        resetState();
+    }
     state[state.current] += e.target.textContent;
     updateDisplay(state[state.current]);
     removeSelectedOperator();
@@ -89,7 +92,15 @@ const handleEqualsClick = (handleEqualsClick) => {
     const result = operate(Number(state.first), Number(state.second), state.operator);
     console.log(result);
     state.first = result;
+    state.justFinished = true;
     updateDisplay(result);
+}
+
+const resetState = () => {
+    state.first = "";
+    state.second = "";
+    state.current = "first";
+    state.justFinished = false;
 }
 
 const addEqualsEvent = () => {
