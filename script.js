@@ -13,7 +13,7 @@ let state = {
     second: "",
     operator: "",
     current: "first",
-    justFinished: false
+    equalsPressed: false
 }
 
 const operate = (a, b, operator) => {
@@ -32,7 +32,7 @@ const operate = (a, b, operator) => {
 }
 
 const handleNumberClick = (e) => {
-    if (state.justFinished) {
+    if (state.equalsPressed) {
         resetState();
     }
     state[state.current] += e.target.textContent;
@@ -49,13 +49,20 @@ const removeSelectedOperator = () => {
 }
 
 const handleOperatorClick = (e) => {
+    console.log(state);
     if (!state.first) {
         return;
     }
+
+    if (state.second) {
+        calculate(false);
+    } else {
+        switchCurrent();
+    }
+
     removeSelectedOperator();
     e.target.classList.add("selected");
     state.operator = e.target.id;
-    switchCurrent();
 }
 
 const addOperatorEvents = () => {
@@ -69,7 +76,7 @@ const switchCurrent = () => {
     if (state.current === "first") {
         state.current = "second";
     } else {
-        state.curent = "first";
+        state.current = "first";
     }
 }
 
@@ -85,22 +92,33 @@ const updateDisplay = (value) => {
     display.textContent = value;
 }
 
-const handleEqualsClick = (handleEqualsClick) => {
+const handleEqualsClick = (e) => {
     if (!state.first || !state.second) {
         return;
     }
+    console.log(state);
+    calculate(true);
+}
+
+const calculate = (equalsPressed) => {
+    result = evaluateResult();
+    state.equalsPressed = equalsPressed;
+    state.first = result;
+    state.second = "";
+    updateDisplay(result);
+}
+
+const evaluateResult = () => {
     const result = operate(Number(state.first), Number(state.second), state.operator);
     console.log(result);
-    state.first = result;
-    state.justFinished = true;
-    updateDisplay(result);
+    return result;
 }
 
 const resetState = () => {
     state.first = "";
     state.second = "";
     state.current = "first";
-    state.justFinished = false;
+    state.equalsPressed = false;
 }
 
 const addEqualsEvent = () => {
