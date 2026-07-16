@@ -8,9 +8,12 @@ const divide = (a, b) => {
     return a / b;
 }
 
-let firstNumber = "";
-let operator = "";
-let secondNumber = "";
+let state = {
+    first: "",
+    second: "",
+    operator: "",
+    current: this.first
+}
 
 const operate = (a, b, operator) => {
     switch (operator) {
