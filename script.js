@@ -11,3 +11,18 @@ const divide = (a, b) => {
 let firstNumber = "";
 let operator = "";
 let secondNumber = "";
+
+const operate = (a, b, operator) => {
+    switch (operator) {
+        case "add":
+            return add(a, b);
+        case "subtract":
+            return subtract(a, b);
+        case "multiply":
+            return multiply(a, b);
+        case "divide":
+            return divide(a, b);
+        default:
+            return NaN;
+    }
+}
