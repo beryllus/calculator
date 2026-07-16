@@ -12,7 +12,7 @@ let state = {
     first: "",
     second: "",
     operator: "",
-    current: this.first
+    current: "first"
 }
 
 const operate = (a, b, operator) => {
@@ -29,3 +29,16 @@ const operate = (a, b, operator) => {
             return NaN;
     }
 }
+
+const handleNumberClick = (e) => {
+    state[state.current] += e.target.textContent;
+}
+
+const addNumberEvents = () => {
+    const numberButtons = document.querySelectorAll(".number");
+    numberButtons.forEach((button) => {
+        button.addEventListener('click', handleNumberClick);
+    })
+}
+
+addNumberEvents();
