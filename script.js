@@ -48,21 +48,24 @@ const removeSelectedOperator = () => {
     }
 }
 
+
 const handleOperatorClick = (e) => {
-    console.log(state);
     if (!state.first) {
         return;
     }
 
     if (state.second) {
         calculate(false);
-    } else {
+    }
+
+    if (!state.operator) {
         switchCurrent();
     }
 
     removeSelectedOperator();
     e.target.classList.add("selected");
     state.operator = e.target.id;
+    console.log(state);
 }
 
 const addOperatorEvents = () => {
