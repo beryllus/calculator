@@ -32,6 +32,7 @@ const operate = (a, b, operator) => {
 
 const handleNumberClick = (e) => {
     state[state.current] += e.target.textContent;
+    updateDisplay(state[state.current]);
 }
 
 const addNumberEvents = () => {
@@ -39,6 +40,11 @@ const addNumberEvents = () => {
     numberButtons.forEach((button) => {
         button.addEventListener('click', handleNumberClick);
     })
+}
+
+const updateDisplay = (value) => {
+    const display = document.querySelector(".result");
+    display.textContent = value;
 }
 
 addNumberEvents();
