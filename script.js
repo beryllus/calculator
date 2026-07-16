@@ -51,6 +51,7 @@ const removeSelectedOperator = () => {
 
 
 const handleOperatorClick = (e) => {
+    console.log(state);
     if (!state.first) {
         return;
     }
@@ -66,6 +67,7 @@ const handleOperatorClick = (e) => {
     removeSelectedOperator();
     e.target.classList.add("selected");
     state.operator = e.target.id;
+    state.equalsPressed = false;
     console.log(state);
 }
 
@@ -112,7 +114,7 @@ const calculate = (equalsPressed) => {
         return;
     }
     state.equalsPressed = equalsPressed;
-    state.first = result;
+    state.first = String(result);
     state.second = "";
     updateDisplay(result);
 }
