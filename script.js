@@ -48,6 +48,7 @@ const handleOperatorClick = (e) => {
     if (!state.first) {
         return;
     }
+    removeSelectedOperator();
     e.target.classList.add("selected");
     state.operator = e.target.id;
     switchCurrent();
