@@ -12,7 +12,8 @@ let state = {
     first: "",
     second: "",
     operator: "",
-    current: "first"
+    current: "first",
+    justFinished: false
 }
 
 const operate = (a, b, operator) => {
@@ -81,5 +82,21 @@ const updateDisplay = (value) => {
     display.textContent = value;
 }
 
+const handleEqualsClick = (handleEqualsClick) => {
+    if (!state.first || !state.second) {
+        return;
+    }
+    const result = operate(Number(state.first), Number(state.second), state.operator);
+    console.log(result);
+    state.first = result;
+    updateDisplay(result);
+}
+
+const addEqualsEvent = () => {
+    const equalsButton = document.querySelector("#equals");
+    equalsButton.addEventListener('click', handleEqualsClick);
+}
+
 addNumberEvents();
 addOperatorEvents();
+addEqualsEvent();
