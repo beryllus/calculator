@@ -182,6 +182,53 @@ const addDelButtonEvent = () => {
     delButton.addEventListener('click', handleDelClick);
 }
 
+const handleKeydown = (e) => {
+    console.log(e.code, e.key, e.shiftKey)
+    if (e.code.startsWith("Digit") && !e.shiftKey && !e.altKey) {
+        pressButton(`#digit-${e.key}`);
+        return;
+    }
+    switch (e.key) {
+        case "*":
+            pressButton("#multiply");
+            break;
+        case "+":
+            pressButton("#add");
+            break;
+        case "-":
+            pressButton("#subtract");
+            break;
+        case "/":
+            pressButton("#divide");
+            break;
+        case "Backspace":
+            pressButton("#delete");
+            break;
+        case "c":
+            pressButton("#clear");
+            break;
+        case "=":
+            pressButton("#equals");
+            break;
+        default:
+            return;
+    }
+}
+
+const addKeyboardEvents = () => {
+    const body = document.querySelector("body");
+    body.addEventListener("keydown", handleKeydown);
+}
+
+const pressButton = (selector) => {
+    const mouseEvent = new MouseEvent('click', {
+        bubbles: true
+    })
+    console.log(selector);
+    const button = document.querySelector(selector);
+    button.dispatchEvent(mouseEvent);
+}
+
 const roundThreeDecimals = (number) => Math.round(number * 1000) / 1000;
 
 addNumberEvents();
@@ -190,3 +237,4 @@ addEqualsEvent();
 addClearButtonEvent();
 addDotEvent();
 addDelButtonEvent();
+addKeyboardEvents();
