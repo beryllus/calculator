@@ -93,6 +93,7 @@ const addNumberEvents = () => {
 const updateDisplay = (value) => {
     const display = document.querySelector(".result");
     display.textContent = value;
+    scrollDisplay();
 }
 
 const handleEqualsClick = (e) => {
@@ -220,6 +221,11 @@ const pressButton = (selector) => {
     })
     const button = document.querySelector(selector);
     button.dispatchEvent(mouseEvent);
+}
+
+const scrollDisplay = () => {
+    const resultDisplay = document.querySelector(".result");
+    resultDisplay.scrollLeft = resultDisplay.scrollWidth;
 }
 
 const roundThreeDecimals = (number) => Math.round(number * 1000) / 1000;
