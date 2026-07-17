@@ -167,6 +167,21 @@ const addDotEvent = () => {
     dotButton.addEventListener("click", handleDotClick);
 }
 
+const handleDelClick = (e) => {
+    if (state[state.current].length > 1) {
+        state[state.current] = state[state.current].slice(0, -1);
+        updateDisplay(state[state.current]);
+    } else {
+        state[state.current] = "";
+        updateDisplay("");
+    }
+}
+
+const addDelButtonEvent = () => {
+    const delButton = document.querySelector("#delete");
+    delButton.addEventListener('click', handleDelClick);
+}
+
 const roundThreeDecimals = (number) => Math.round(number * 1000) / 1000;
 
 addNumberEvents();
@@ -174,3 +189,4 @@ addOperatorEvents();
 addEqualsEvent();
 addClearButtonEvent();
 addDotEvent();
+addDelButtonEvent();
