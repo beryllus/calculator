@@ -39,7 +39,6 @@ const handleNumberClick = (e) => {
     state[state.current] += e.target.textContent;
     updateDisplay(state[state.current]);
     removeSelectedOperator();
-    console.log(state)
 }
 
 const removeSelectedOperator = () => {
@@ -51,7 +50,6 @@ const removeSelectedOperator = () => {
 
 
 const handleOperatorClick = (e) => {
-    console.log(state);
     if (!state.first) {
         return;
     }
@@ -68,7 +66,6 @@ const handleOperatorClick = (e) => {
     e.target.classList.add("selected");
     state.operator = e.target.id;
     state.equalsPressed = false;
-    console.log(state);
 }
 
 const addOperatorEvents = () => {
@@ -102,7 +99,6 @@ const handleEqualsClick = (e) => {
     if (!state.first || !state.second) {
         return;
     }
-    console.log(state);
     calculate(true);
 }
 
@@ -121,7 +117,6 @@ const calculate = (equalsPressed) => {
 
 const evaluateResult = () => {
     const result = operate(Number(state.first), Number(state.second), state.operator);
-    console.log(result);
     return roundThreeDecimals(result);
 }
 
@@ -183,7 +178,6 @@ const addDelButtonEvent = () => {
 }
 
 const handleKeydown = (e) => {
-    console.log(e.code, e.key, e.shiftKey)
     if (e.code.startsWith("Digit") && !e.shiftKey && !e.altKey) {
         pressButton(`#digit-${e.key}`);
         return;
@@ -224,7 +218,6 @@ const pressButton = (selector) => {
     const mouseEvent = new MouseEvent('click', {
         bubbles: true
     })
-    console.log(selector);
     const button = document.querySelector(selector);
     button.dispatchEvent(mouseEvent);
 }
