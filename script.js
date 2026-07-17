@@ -149,6 +149,23 @@ const addClearButtonEvent = () => {
     const clearButton = document.querySelector('#clear');
     clearButton.addEventListener('click', handleClearButtonClick);
 }
+const handleDotClick = (e) => {
+    if (state[state.current].includes(".")) {
+        return;
+    }
+    if (state[state.current].length == 0) {
+        state[state.current] = "0.";
+    } else {
+        state[state.current] += ".";
+    }
+    updateDisplay(state[state.current]);
+    removeSelectedOperator();
+}
+
+const addDotEvent = () => {
+    const dotButton = document.querySelector("#dot");
+    dotButton.addEventListener("click", handleDotClick);
+}
 
 const roundThreeDecimals = (number) => Math.round(number * 1000) / 1000;
 
@@ -156,3 +173,4 @@ addNumberEvents();
 addOperatorEvents();
 addEqualsEvent();
 addClearButtonEvent();
+addDotEvent();
